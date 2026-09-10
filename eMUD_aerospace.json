@@ -1,0 +1,117 @@
+{
+    "ietf-mud:mud": {
+      "mud-version": 1,
+      "mud-url": "https://devicemanufacturer.com/device_uuid",
+      "last-update": "2024-12-18T21:07:00+01:00",
+      "cache-validity": 48,
+      "extensions": [
+        "network-fingerprint",
+        "monitor-mode",
+        "so-hash",
+        "integrity-fingerprint",
+        "umu-mspl-list:mspls"
+      ],
+      "network-fingerprint": "((PortclSrc-42,UDP-45)=([1.0,1.0],[0.0,0.0]) OR (PortclSrc-42,UDP-45)=([0.0,0.0],[-1.0,-1.0]) OR (PortclSrc-42,UDP-45)=([2.0,2.0],[1.0,1.0])) AND ((PortclSrc-42,DHCP-45)=([1.0,1.0],[0.0,0.0]) OR (PortclSrc-42,DHCP-45)=([0.0,0.0],[-1.0,-1.0]) OR (PortclSrc-42,DHCP-45)=([2.0,2.0],[1.0,1.0]))",
+      "monitor-mode": "active",
+      "so-hash": "((PortclSrc-42,UDP-45)=([1.0,1.0],[0.0,0.0]) OR (PortclSrc-42,UDP-45)=([0.0,0.0],[-1.0,-1.0]) OR (PortclSrc-42,UDP-45)=([2.0,2.0],[1.0,1.0])) AND ((PortclSrc-42,DHCP-45)=([1.0,1.0],[0.0,0.0]) OR (PortclSrc-42,DHCP-45)=([0.0,0.0],[-1.0,-1.0]) OR (PortclSrc-42,DHCP-45)=([2.0,2.0],[1.0,1.0]))",
+      "integrity-fingerprint": "{'moore_machine': {'initial-state': '0', 'input-alphabet': ['0', '3', '2', '1'], 'output-alphabet': ['0', '2', '1'], 'output-function': {'0': '0', '1': '0', '10': '2', '11': '2', '12': '0', '13': '2', '14': '2', '15': '2', '16': '2', '17': '2', '18': '2', '19': '2', '2': '0', '20': '2', '21': '0', '22': '0', '23': '0', '24': '0', '25': '0', '26': '0', '3': '0', '4': '0', '5': '2', '6': '2', '7': '2', '8': '2', '9': '1'}, 'states': ['0', '26', '17', '15', '24', '19', '6', '10', '1', '8', '13', '21', '12', '14', '23', '3', '5', '4', '22', '20', '7', '2', '11', '16', '25', '18', '9'], 'transition-function': {'0': {'0': '9', '1': '1', '2': '9', '3': '9'}, '1': {'0': '9', '1': '2', '2': '24', '3': '9'}, '10': {'0': '9', '1': '9', '2': '11', '3': '13'}, '11': {'0': '9', '1': '9', '2': '12', '3': '9'}, '12': {'0': '9', '1': '9', '2': '9', '3': '9'}, '13': {'0': '14', '1': '9', '2': '9', '3': '9'}, '14': {'0': '9', '1': '9', '2': '11', '3': '15'}, '15': {'0': '16', '1': '9', '2': '9', '3': '9'}, '16': {'0': '9', '1': '9', '2': '11', '3': '17'}, '17': {'0': '18', '1': '9', '2': '9', '3': '9'}, '18': {'0': '9', '1': '9', '2': '11', '3': '19'}, '19': {'0': '20', '1': '9', '2': '9', '3': '9'}, '2': {'0': '10', '1': '3', '2': '21', '3': '9'}, '20': {'0': '9', '1': '9', '2': '11', '3': '9'}, '21': {'0': '9', '1': '22', '2': '10', '3': '9'}, '22': {'0': '9', '1': '23', '2': '9', '3': '9'}, '23': {'0': '14', '1': '9', '2': '9', '3': '9'}, '24': {'0': '9', '1': '25', '2': '9', '3': '9'}, '25': {'0': '9', '1': '22', '2': '26', '3': '9'}, '26': {'0': '9', '1': '22', '2': '9', '3': '9'}, '3': {'0': '9', '1': '4', '2': '9', '3': '9'}, '4': {'0': '10', '1': '5', '2': '9', '3': '9'}, '5': {'0': '5', '1': '5', '2': '6', '3': '7'}, '6': {'0': '8', '1': '6', '2': '7', '3': '0'}, '7': {'0': '7', '1': '6', '2': '0', '3': '6'}, '8': {'0': '5', '1': '5', '2': '8', '3': '0'}, '9': {'0': '9', '1': '9', '2': '9', '3': '9'}}}, 'moore_alpha_maps': [{'input-map': {'fclose@plt': '2', 'fopen@plt': '1', 'fread@plt': '0', 'fwrite@plt': '3'}, 'output-map': {'ACCEPT': '0', 'OK': '2', 'REJECT': '1'}}, {'input-map': {'0': 'fread@plt', '1': 'fopen@plt', '2': 'fclose@plt', '3': 'fwrite@plt'}, 'output-map': {'0': 'ACCEPT', '1': 'REJECT', '2': 'OK'}}]}",
+      "is-supported": true,
+      "modelname": "Siemens",
+      "systeminfo": "Siemens model 10294230 device Current MUD File",
+      "from-device-policy": {
+        "access-lists": {
+          "access-list": [
+            "mud-frdev1"
+          ]
+        }
+      },
+      "to-device-policy": {
+        "access-lists": {
+          "access-list": [
+            "mud-todev1"
+          ]
+        }
+      }
+    },
+    "ietf-access-control-list:acls": {
+      "acl": [
+        {
+          "name": "mud-frdev1",
+          "type": "ipv6-acl-type",
+          "aces": {
+            "ace": [
+              {
+                "name": "cl0-frdev",
+                "matches": {
+                  "mud":{
+                    "manufacturer": "LogicProCorporation.com"
+                  }
+                },
+                "actions": {
+                  "forwarding": "accept"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "mud-todev1",
+          "type": "ipv6-acl-type",
+          "aces": {
+            "ace": [
+              {
+                "name": "cl0-todev",
+                "matches": {
+                  "mud":{
+                    "manufacturer": "LogicProCorporation.com"
+                  }
+                },
+                "actions": {
+                  "forwarding": "accept"
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    "umu-mspl-list:mspls": {
+      "mspl":[ {
+        "name": "mspl_bootstrapping_example",
+        "configuration": {
+          "capability": "TrafficProtection",
+          "rule_set_configuration": {
+            "name": "mspl_restriction_rule_1",
+            "configuration_rule": [
+              {
+                "name": "rule_1",
+                "configuration_action": {
+                  "communication_restriction_action": [
+                    {
+                      "communication_restriction_type": "allow",
+                      "restriction_type": "constrained",
+                      "verifiers": [
+                        {
+                          "name": "verifier1",
+                          "frequency": "1000",
+                          "attestation_type": "golden hash"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "configuration_condition": {
+                  "filtering_configuration_condition": {
+                    "packet_filter_condition": {
+                      "source_dnsname": "LogicProCorporation.com",
+                      "destination_dnsname": "LogicProCorporation.com"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }]
+    }
+  }
