@@ -1,0 +1,566 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MSPL JSON Schema",
+  "description": "JSON Schema mspl",
+  "type": "object",
+  "properties": {
+    "mspl:name": {
+      "type": "string"
+    },
+    "mspl:configuration": {
+      "type": "object",
+      "properties": {
+        "capability": {
+          "type": "string"
+        },
+        "rule_set_configuration": {
+          "type": "object",
+          "properties": {
+            "name": {
+              "type": "string"
+            },
+            "default_action": {
+              "type": "string",
+              "enum": [
+                "allow",
+                "deny",
+                "reject"
+              ]
+            },
+            "configuration_rule": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "external_data": {
+                    "type": "object",
+                    "properties": {
+                      "priority": {
+                        "type": "integer",
+                        "minimum": -2147483648,
+                        "maximum": 2147483647
+                      }
+                    },
+                    "additionalProperties": false,
+                    "required": [
+                      "priority"
+                    ]
+                  },
+                  "configuration_action": {
+                    "type": "object",
+                    "properties": {
+                      "software_protection_action": {
+                        "type": "object",
+                        "properties": {
+                          "software_protection_type": {
+                            "type": "string",
+                            "enum": [
+                              "update"
+                            ]
+                          },
+                          "software_fixed_version": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "software_fix_url": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "software_protection_type"
+                        ]
+                      },
+                      "filtering_action": {
+                        "type": "object",
+                        "properties": {
+                          "filtering_action_type": {
+                            "type": "string",
+                            "enum": [
+                              "allow",
+                              "deny",
+                              "reject"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "filtering_action_type"
+                        ]
+                      },
+                      "parental_control_action": {
+                        "type": "object",
+                        "properties": {
+                          "enable": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "enable"
+                        ]
+                      },
+                      "data_protection_action": {
+                        "type": "object",
+                        "properties": {
+                          "technology": {
+                            "type": "string"
+                          },
+                          "technology_action_security_property": {
+                            "type": "object",
+                            "properties": {
+                              "confidenciality": {
+                                "type": "object",
+                                "properties": {
+                                  "encryption_algorithm": {
+                                    "type": "string"
+                                  },
+                                  "key_size": {
+                                    "type": "string"
+                                  },
+                                  "mode": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "encryption_algorithm",
+                                  "key_size",
+                                  "mode"
+                                ]
+                              },
+                              "integrity": {
+                                "type": "object",
+                                "properties": {
+                                  "integrity_algorithm": {
+                                    "type": "string"
+                                  },
+                                  "integrity_header": {
+                                    "type": "string"
+                                  },
+                                  "integrity_payload": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "integrity_algorithm",
+                                  "integrity_header",
+                                  "integrity_payload"
+                                ]
+                              },
+                              "authentication": {
+                                "type": "object",
+                                "properties": {
+                                  "server_auth_mechanism": {
+                                    "type": "string"
+                                  },
+                                  "client_auth_mechanism": {
+                                    "type": "string"
+                                  },
+                                  "peer_auth_mechanism": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "server_auth_mechanism",
+                                  "client_auth_mechanism",
+                                  "peer_auth_mechanism"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "action_parameter": {
+                            "type": "object",
+                            "properties": {
+                              "technology_specific_parameter": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "TLS_VPN_technology_parameter": {
+                                      "type": "object",
+                                      "properties": {
+                                        "peer_port": {
+                                          "type": "string"
+                                        },
+                                        "L4_protocol": {
+                                          "type": "string"
+                                        },
+                                        "local_endpoint": {
+                                          "type": "string"
+                                        },
+                                        "remote_endpoint": {
+                                          "type": "string"
+                                        },
+                                        "virtualIP_destination": {
+                                          "type": "string"
+                                        },
+                                        "virtualIP_source": {
+                                          "type": "string"
+                                        },
+                                        "device": {
+                                          "type": "string"
+                                        },
+                                        "tls_mode": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "peer_port",
+                                        "L4_protocol",
+                                        "local_endpoint",
+                                        "remote_endpoint",
+                                        "virtualIP_destination",
+                                        "virtualIP_source",
+                                        "device",
+                                        "tls_mode"
+                                      ]
+                                    },
+                                    "IPSec_technology_parameter": {
+                                      "type": "object",
+                                      "properties": {
+                                        "ipsec_protocol": {
+                                          "type": "string"
+                                        },
+                                        "isTunnel": {
+                                          "type": "boolean"
+                                        },
+                                        "local_endpoint": {
+                                          "type": "string"
+                                        },
+                                        "remote_endpoint": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "ipsec_protocol",
+                                        "isTunnel",
+                                        "local_endpoint",
+                                        "remote_endpoint"
+                                      ]
+                                    },
+                                    "IKE_technology_parameter": {
+                                      "type": "object",
+                                      "properties": {
+                                        "phaseTwo_pfs_group": {
+                                          "type": "string"
+                                        },
+                                        "exchange_mode": {
+                                          "type": "string"
+                                        },
+                                        "phaseOne_dh_group": {
+                                          "type": "string"
+                                        },
+                                        "phaseTwo_compress_alg": {
+                                          "type": "string"
+                                        },
+                                        "hash_algorithm": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "required": [
+                                        "phaseTwo_pfs_group",
+                                        "exchange_mode",
+                                        "phaseOne_dh_group",
+                                        "phaseTwo_compress_alg",
+                                        "hash_algorithm"
+                                      ]
+                                    },
+                                    "TLS_SSL_technology_parameter": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "required": [
+                                    "TLS_SSL_technology_parameter"
+                                  ]
+                                }
+                              },
+                              "aditional_network_configuration_parameters": {
+                                "type": "object",
+                                "properties": {
+                                  "remote_access_network_configuration": {
+                                    "type": "object",
+                                    "properties": {
+                                      "start_IP_address": {
+                                        "type": "string"
+                                      },
+                                      "max_clients": {
+                                        "type": "integer",
+                                        "minimum": -2147483648,
+                                        "maximum": 2147483647
+                                      },
+                                      "netmask": {
+                                        "type": "string"
+                                      },
+                                      "routed_subnets": {
+                                        "type": "string"
+                                      },
+                                      "dns_server": {
+                                        "type": "string"
+                                      },
+                                      "domain_suffix": {
+                                        "type": "string"
+                                      },
+                                      "wins": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "start_IP_address",
+                                      "max_clients",
+                                      "netmask",
+                                      "routed_subnets",
+                                      "dns_server",
+                                      "domain_suffix",
+                                      "wins"
+                                    ]
+                                  },
+                                  "siteTosite_network_configuration": {
+                                    "type": "object",
+                                    "properties": {
+                                      "local_network": {
+                                        "type": "string"
+                                      },
+                                      "remote_network": {
+                                        "type": "string"
+                                      },
+                                      "local_network_mask": {
+                                        "type": "string"
+                                      },
+                                      "remote_network_mask": {
+                                        "type": "string"
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "required": [
+                                      "local_network",
+                                      "remote_network",
+                                      "local_network_mask",
+                                      "remote_network_mask"
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "authentication_parameter": {
+                                "type": "object",
+                                "properties": {
+                                  "pskey_value": {
+                                    "type": "string"
+                                  },
+                                  "pskey_path": {
+                                    "type": "string"
+                                  },
+                                  "ca_path": {
+                                    "type": "string"
+                                  },
+                                  "cert_path": {
+                                    "type": "string"
+                                  },
+                                  "key_path": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "pskey_value",
+                                  "pskey_path",
+                                  "ca_path",
+                                  "cert_path",
+                                  "key_path"
+                                ]
+                              },
+                              "key_exchange_parameter": {
+                                "type": "object",
+                                "properties": {
+                                  "key_exchange_action": {
+                                    "type": "string"
+                                  },
+                                  "hash_algorithm": {
+                                    "type": "string"
+                                  },
+                                  "symmetric_encryption": {
+                                    "type": "string"
+                                  },
+                                  "authentication_type": {
+                                    "type": "string"
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "required": [
+                                  "key_exchange_action",
+                                  "hash_algorithm",
+                                  "symmetric_encryption",
+                                  "authentication_type"
+                                ]
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false,
+                        "required": [
+                          "technology"
+                        ]
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "configuration_condition": {
+                    "type": "object",
+                    "properties": {
+                      "filtering_configuration_condition": {
+                        "type": "object",
+                        "properties": {
+                          "packet_filter_condition": {
+                            "type": "object",
+                            "properties": {
+                              "source_address": {
+                                "type": "string"
+                              },
+                              "destination_address": {
+                                "type": "string"
+                              },
+                              "source_dnsname": {
+                                "type": "string"
+                              },
+                              "destination_dnsname": {
+                                "type": "string"
+                              },
+                              "source_port": {
+                                "type": "string"
+                              },
+                              "destination_port": {
+                                "type": "string"
+                              },
+                              "direction": {
+                                "type": "string",
+                                "enum": [
+                                  "INBOUND",
+                                  "OUTBOUND",
+                                  "BOTH"
+                                ]
+                              },
+                              "interface": {
+                                "type": "string"
+                              },
+                              "protocol_type": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "source_address",
+                              "destination_address",
+                              "source_dnsname",
+                              "destination_dnsname",
+                              "source_port",
+                              "destination_port",
+                              "direction",
+                              "interface",
+                              "protocol_type"
+                            ]
+                          },
+                          "stateful_condition": {
+                            "type": "object",
+                            "properties": {
+                              "state": {
+                                "type": "string"
+                              },
+                              "limit_rule_hits": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "state",
+                              "limit_rule_hits"
+                            ]
+                          },
+                          "application_layer_condition": {
+                            "type": "object",
+                            "properties": {
+                              "url": {
+                                "type": "string"
+                              },
+                              "http_method": {
+                                "type": "string"
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "url",
+                              "http_method"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "software_configuration_condition": {
+                        "type": "object",
+                        "properties": {
+                          "software_identification_condition": {
+                            "type": "object",
+                            "properties": {
+                              "software_name": {
+                                "type": "string"
+                              },
+                              "software_version": {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "additionalProperties": false,
+                            "required": [
+                              "software_name"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false
+                  },
+                  "name": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false,
+                "required": [
+                  "name"
+                ]
+              }
+            }
+          },
+          "additionalProperties": false,
+          "required": [
+            "name"
+          ]
+        }
+      },
+      "additionalProperties": false,
+      "required": [
+        "capability"
+      ]
+    }
+  },
+  "additionalProperties": false,
+  "required": [
+    "mspl:name"
+  ]
+}
