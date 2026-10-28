@@ -1,25 +1,32 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "MSPL JSON Schema",
-  "description": "JSON Schema mspl",
+  "$id": "um:yang:mspl:2026",
+  "title": "MSPL (revision 2026-10-27)",
+  "description": "JSON Schema for MSPL module",
   "type": "object",
   "properties": {
-    "mspl:name": {
+    "name": {
+      "description": "Name of mspl",
       "type": "string"
     },
-    "mspl:configuration": {
+    "configuration": {
+      "description": "Configuration container",
       "type": "object",
       "properties": {
         "capability": {
+          "description": "Capability that this configuration address",
           "type": "string"
         },
         "rule_set_configuration": {
+          "description": "Contains a set of rules that have certain priority",
           "type": "object",
           "properties": {
             "name": {
+              "description": "Name of the set",
               "type": "string"
             },
             "default_action": {
+              "description": "Default action performed when a packet is received and no configuration rule address it",
               "type": "string",
               "enum": [
                 "allow",
@@ -28,14 +35,17 @@
               ]
             },
             "configuration_rule": {
+              "description": "list for objects that match with a condition and perform action an over traffic",
               "type": "array",
               "items": {
                 "type": "object",
                 "properties": {
                   "external_data": {
+                    "description": "container extensible in future versions",
                     "type": "object",
                     "properties": {
                       "priority": {
+                        "description": "priority of the rule, helps in case of conflict between two rules",
                         "type": "integer",
                         "minimum": -2147483648,
                         "maximum": 2147483647
@@ -47,24 +57,29 @@
                     ]
                   },
                   "configuration_action": {
+                    "description": "actions performed over matched traffic",
                     "type": "object",
                     "properties": {
                       "software_protection_action": {
+                        "description": "software related actions",
                         "type": "object",
                         "properties": {
                           "software_protection_type": {
+                            "description": "type of software protection action, exensible in future versions",
                             "type": "string",
                             "enum": [
                               "update"
                             ]
                           },
                           "software_fixed_version": {
+                            "description": "First version or several versions that fix the problem",
                             "type": "array",
                             "items": {
                               "type": "string"
                             }
                           },
                           "software_fix_url": {
+                            "description": "Urls that have fixed software for download",
                             "type": "array",
                             "items": {
                               "type": "string"
@@ -77,9 +92,11 @@
                         ]
                       },
                       "filtering_action": {
+                        "description": "traffic filtering_actions",
                         "type": "object",
                         "properties": {
                           "filtering_action_type": {
+                            "description": "filtering_action_type",
                             "type": "string",
                             "enum": [
                               "allow",
@@ -94,9 +111,11 @@
                         ]
                       },
                       "parental_control_action": {
+                        "description": "parental_control_action",
                         "type": "object",
                         "properties": {
                           "enable": {
+                            "description": "parental control filter",
                             "type": "string"
                           }
                         },
@@ -106,24 +125,31 @@
                         ]
                       },
                       "data_protection_action": {
+                        "description": "data_protection_action",
                         "type": "object",
                         "properties": {
                           "technology": {
+                            "description": "technology",
                             "type": "string"
                           },
                           "technology_action_security_property": {
+                            "description": "technology_action_security_property actions",
                             "type": "object",
                             "properties": {
                               "confidenciality": {
+                                "description": "confidenciality action",
                                 "type": "object",
                                 "properties": {
                                   "encryption_algorithm": {
+                                    "description": "encryption_algorithm",
                                     "type": "string"
                                   },
                                   "key_size": {
+                                    "description": "key_size",
                                     "type": "string"
                                   },
                                   "mode": {
+                                    "description": "mode",
                                     "type": "string"
                                   }
                                 },
@@ -135,15 +161,19 @@
                                 ]
                               },
                               "integrity": {
+                                "description": "integrity action",
                                 "type": "object",
                                 "properties": {
                                   "integrity_algorithm": {
+                                    "description": "integrity_algorithm",
                                     "type": "string"
                                   },
                                   "integrity_header": {
+                                    "description": "integrity_header",
                                     "type": "string"
                                   },
                                   "integrity_payload": {
+                                    "description": "integrity_payload",
                                     "type": "string"
                                   }
                                 },
@@ -155,15 +185,19 @@
                                 ]
                               },
                               "authentication": {
+                                "description": "authentication action",
                                 "type": "object",
                                 "properties": {
                                   "server_auth_mechanism": {
+                                    "description": "server_auth_mechanism",
                                     "type": "string"
                                   },
                                   "client_auth_mechanism": {
+                                    "description": "client_auth_mechanism",
                                     "type": "string"
                                   },
                                   "peer_auth_mechanism": {
+                                    "description": "peer_auth_mechanism",
                                     "type": "string"
                                   }
                                 },
@@ -178,38 +212,49 @@
                             "additionalProperties": false
                           },
                           "action_parameter": {
+                            "description": "",
                             "type": "object",
                             "properties": {
                               "technology_specific_parameter": {
+                                "description": "list technology_specific_parameter",
                                 "type": "array",
                                 "items": {
                                   "type": "object",
                                   "properties": {
                                     "TLS_VPN_technology_parameter": {
+                                      "description": "TLS_VPN_technology_parameter",
                                       "type": "object",
                                       "properties": {
                                         "peer_port": {
+                                          "description": "peer_port",
                                           "type": "string"
                                         },
                                         "L4_protocol": {
+                                          "description": "Layer 4 protocol",
                                           "type": "string"
                                         },
                                         "local_endpoint": {
+                                          "description": "local_endpoint",
                                           "type": "string"
                                         },
                                         "remote_endpoint": {
+                                          "description": "remote_endpoint",
                                           "type": "string"
                                         },
                                         "virtualIP_destination": {
+                                          "description": "virtualIP_destination",
                                           "type": "string"
                                         },
                                         "virtualIP_source": {
+                                          "description": "virtualIP_source",
                                           "type": "string"
                                         },
                                         "device": {
+                                          "description": "device",
                                           "type": "string"
                                         },
                                         "tls_mode": {
+                                          "description": "tls_mode",
                                           "type": "string"
                                         }
                                       },
@@ -226,18 +271,23 @@
                                       ]
                                     },
                                     "IPSec_technology_parameter": {
+                                      "description": "IPSec_technology_parameters",
                                       "type": "object",
                                       "properties": {
                                         "ipsec_protocol": {
+                                          "description": "ipsec_protocol",
                                           "type": "string"
                                         },
                                         "isTunnel": {
+                                          "description": "boolean isTunnel",
                                           "type": "boolean"
                                         },
                                         "local_endpoint": {
+                                          "description": "local_endpoint",
                                           "type": "string"
                                         },
                                         "remote_endpoint": {
+                                          "description": "remote_endpoint",
                                           "type": "string"
                                         }
                                       },
@@ -250,21 +300,27 @@
                                       ]
                                     },
                                     "IKE_technology_parameter": {
+                                      "description": "IKE_technology_parameters",
                                       "type": "object",
                                       "properties": {
                                         "phaseTwo_pfs_group": {
+                                          "description": "phaseTwo_pfs_group",
                                           "type": "string"
                                         },
                                         "exchange_mode": {
+                                          "description": "exchange_mode (will be enumerated in future versions)",
                                           "type": "string"
                                         },
                                         "phaseOne_dh_group": {
+                                          "description": "phaseOne_dh_group",
                                           "type": "string"
                                         },
                                         "phaseTwo_compress_alg": {
+                                          "description": "phaseTwo_compress_alg",
                                           "type": "string"
                                         },
                                         "hash_algorithm": {
+                                          "description": "hash_algorithm",
                                           "type": "string"
                                         }
                                       },
@@ -278,6 +334,7 @@
                                       ]
                                     },
                                     "TLS_SSL_technology_parameter": {
+                                      "description": "TLS_SSL_technology_parameter",
                                       "type": "string"
                                     }
                                   },
@@ -288,32 +345,41 @@
                                 }
                               },
                               "aditional_network_configuration_parameters": {
+                                "description": "container aditional_network_configuration_parameters",
                                 "type": "object",
                                 "properties": {
                                   "remote_access_network_configuration": {
+                                    "description": "container remote_access_network_configuration",
                                     "type": "object",
                                     "properties": {
                                       "start_IP_address": {
+                                        "description": "start_IP_address",
                                         "type": "string"
                                       },
                                       "max_clients": {
+                                        "description": "max_clients",
                                         "type": "integer",
                                         "minimum": -2147483648,
                                         "maximum": 2147483647
                                       },
                                       "netmask": {
+                                        "description": "netmask",
                                         "type": "string"
                                       },
                                       "routed_subnets": {
+                                        "description": "routed_subnets",
                                         "type": "string"
                                       },
                                       "dns_server": {
+                                        "description": "dns_server",
                                         "type": "string"
                                       },
                                       "domain_suffix": {
+                                        "description": "domain_suffix",
                                         "type": "string"
                                       },
                                       "wins": {
+                                        "description": "wins",
                                         "type": "string"
                                       }
                                     },
@@ -329,18 +395,23 @@
                                     ]
                                   },
                                   "siteTosite_network_configuration": {
+                                    "description": "siteTosite_network_configuration parameters",
                                     "type": "object",
                                     "properties": {
                                       "local_network": {
+                                        "description": "local_network",
                                         "type": "string"
                                       },
                                       "remote_network": {
+                                        "description": "remote_network",
                                         "type": "string"
                                       },
                                       "local_network_mask": {
+                                        "description": "local_network_mask",
                                         "type": "string"
                                       },
                                       "remote_network_mask": {
+                                        "description": "remote_network_mask",
                                         "type": "string"
                                       }
                                     },
@@ -356,21 +427,27 @@
                                 "additionalProperties": false
                               },
                               "authentication_parameter": {
+                                "description": "container authentication_parameter",
                                 "type": "object",
                                 "properties": {
                                   "pskey_value": {
+                                    "description": "pskey_value",
                                     "type": "string"
                                   },
                                   "pskey_path": {
+                                    "description": "pskey_path",
                                     "type": "string"
                                   },
                                   "ca_path": {
+                                    "description": "ca_path",
                                     "type": "string"
                                   },
                                   "cert_path": {
+                                    "description": "cert_path",
                                     "type": "string"
                                   },
                                   "key_path": {
+                                    "description": "key_path",
                                     "type": "string"
                                   }
                                 },
@@ -384,18 +461,23 @@
                                 ]
                               },
                               "key_exchange_parameter": {
+                                "description": "container key_exchange_parameter",
                                 "type": "object",
                                 "properties": {
                                   "key_exchange_action": {
+                                    "description": "key_exchange_action",
                                     "type": "string"
                                   },
                                   "hash_algorithm": {
+                                    "description": "hash_algorithm",
                                     "type": "string"
                                   },
                                   "symmetric_encryption": {
+                                    "description": "symmetric_encryption",
                                     "type": "string"
                                   },
                                   "authentication_type": {
+                                    "description": "authentication_type",
                                     "type": "string"
                                   }
                                 },
@@ -420,33 +502,43 @@
                     "additionalProperties": false
                   },
                   "configuration_condition": {
+                    "description": "configuration_condition",
                     "type": "object",
                     "properties": {
                       "filtering_configuration_condition": {
+                        "description": "traffic filtering_configuration_condition",
                         "type": "object",
                         "properties": {
                           "packet_filter_condition": {
+                            "description": "packet_filter_condition",
                             "type": "object",
                             "properties": {
                               "source_address": {
+                                "description": "source_address",
                                 "type": "string"
                               },
                               "destination_address": {
+                                "description": "destination_address",
                                 "type": "string"
                               },
                               "source_dnsname": {
+                                "description": "source_dns_name",
                                 "type": "string"
                               },
                               "destination_dnsname": {
+                                "description": "destination_dns_name",
                                 "type": "string"
                               },
                               "source_port": {
+                                "description": "source_port",
                                 "type": "string"
                               },
                               "destination_port": {
+                                "description": "destination_port",
                                 "type": "string"
                               },
                               "direction": {
+                                "description": "direction of packet",
                                 "type": "string",
                                 "enum": [
                                   "INBOUND",
@@ -455,32 +547,26 @@
                                 ]
                               },
                               "interface": {
+                                "description": "name of interface",
                                 "type": "string"
                               },
                               "protocol_type": {
+                                "description": "protocol number udp, tcp, ....",
                                 "type": "string"
                               }
                             },
-                            "additionalProperties": false,
-                            "required": [
-                              "source_address",
-                              "destination_address",
-                              "source_dnsname",
-                              "destination_dnsname",
-                              "source_port",
-                              "destination_port",
-                              "direction",
-                              "interface",
-                              "protocol_type"
-                            ]
+                            "additionalProperties": false
                           },
                           "stateful_condition": {
+                            "description": "container stateful_condition",
                             "type": "object",
                             "properties": {
                               "state": {
+                                "description": "state of connection",
                                 "type": "string"
                               },
                               "limit_rule_hits": {
+                                "description": "limit_rule_hits",
                                 "type": "string"
                               }
                             },
@@ -491,12 +577,15 @@
                             ]
                           },
                           "application_layer_condition": {
+                            "description": "container application_layer_condition",
                             "type": "object",
                             "properties": {
                               "url": {
+                                "description": "url of application content",
                                 "type": "string"
                               },
                               "http_method": {
+                                "description": "http_method",
                                 "type": "string"
                               }
                             },
@@ -510,15 +599,19 @@
                         "additionalProperties": false
                       },
                       "software_configuration_condition": {
+                        "description": "software_configuration_condition",
                         "type": "object",
                         "properties": {
                           "software_identification_condition": {
+                            "description": "identify software vulnerable",
                             "type": "object",
                             "properties": {
                               "software_name": {
+                                "description": "software_name",
                                 "type": "string"
                               },
                               "software_version": {
+                                "description": "Versions that have the vulnerability (<, <= can be used)",
                                 "type": "array",
                                 "items": {
                                   "type": "string"
@@ -537,6 +630,7 @@
                     "additionalProperties": false
                   },
                   "name": {
+                    "description": "name of rule (configuration rule name)",
                     "type": "string"
                   }
                 },
@@ -561,6 +655,6 @@
   },
   "additionalProperties": false,
   "required": [
-    "mspl:name"
+    "name"
   ]
 }
